@@ -1,0 +1,233 @@
+.gm-style-iw-c {
+    padding: 0 !important;
+    /* background-color: red !important; */
+  }
+  
+  .gm-style-iw-d {
+    overflow: auto !important;
+    max-height: auto !important;
+    max-width: 300px;
+  }
+  
+  .gm-style .gm-style-iw-tc::after {
+    background-color: #CFD5FC;
+  }
+  
+  .gm-ui-hover-effect {
+    display: block !important;
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    background-color: #6374EA !important;
+    border-bottom-left-radius: 6px;
+    opacity: 1;
+  }
+  .gm-ui-hover-effect span {
+    color: white !important;
+    filter: invert(1);
+  }
+  .gm-ui-hover-effect:hover {
+    opacity: 0.6;
+  }
+  
+  .gm-style-iw-ch {
+    display: none;
+  }
+  
+  .location-container {
+    padding: 1rem;
+  }
+  
+  .location-head {
+    margin-right: 3rem !important;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+  }
+  
+  .sandwych-logo {
+    max-height: 18px;
+    height: 18px;
+  }
+  
+  .location-head h3 {
+    font-size: 16px !important;
+    margin: 0px;
+  }
+  
+  .location-head p {
+    font-size: 14px !important;
+  }
+  
+  .location-container hr {
+    border-color: #6374EA;
+    opacity: 30%;
+  }
+  
+  .location-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #CFD5FC;
+  }
+  
+  .location-footer a {
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-marker {
+    position: absolute;
+    width: 100px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .marker-content {
+    font-size: 12px;
+    color: #333;
+  }
+  
+  .aip {
+    font-weight: bold;
+  }
+  
+  .rating {
+    color: #ff9800; /* You can style the rating color as desired */
+  }
+  
+  .price-tag {
+    background: orange;
+    color: white;
+    padding: 1px 17px;
+    border-radius: 20px;
+    font-size: 14px;
+    position: relative;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff;
+  }
+  
+  /* .price-tag::after{
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 13px solid orange;
+      bottom: -13px;
+  } */
+  .price-tag .price {
+    font-weight: bold;
+  }
+  
+  .price-tag .rating {
+    position: absolute;
+    z-index: 1;
+    bottom: -6px;
+    right: -4px;
+    padding: 1px 1px;
+    color: #F1BF42;
+    background-color: #ffffff;
+    border-radius: 20px;
+    font-size: 10px;
+    line-height: 1;
+  }
+  
+  .price-tag::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: orange;
+    position: absolute;
+    left: calc(50% - 5px);
+    bottom: -7px;
+    transform: rotate(45deg);
+    border-width: 1px;
+    border-color: #ffffff;
+    border-style: none solid solid none;
+  }
+  
+  .fa-star {
+    font-size: 20px; /* Adjust size as needed */
+    color: #ccc; /* Default color for empty stars */
+  }
+  
+  .checked {
+    color: gold; /* Full star color */
+  }
+  
+  .half {
+    position: relative;
+    color: gold;
+    overflow: hidden;
+    display: inline-block;
+    width: 50%; /* Show only half of the star */
+  }
+  
+  .half::after {
+    content: "\f005"; /* Font Awesome star character */
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ccc; /* Gray color for unfilled part */
+    width: 100%;
+  }
+  
+  .price-1 {
+    background-color: #007C64;
+  }
+  .price-1::after {
+    background-color: #007C64;
+  }
+  
+  .price-2 {
+    background-color: #4E9FB5;
+  }
+  .price-2::after {
+    background-color: #4E9FB5;
+  }
+  
+  .price-3 {
+    background-color: #FDBD3F;
+  }
+  .price-3::after {
+    background-color: #FDBD3F;
+  }
+  
+  .price-4 {
+    background-color: #E87400;
+  }
+  .price-4::after {
+    background-color: #E87400;
+  }
+  
+  .bg-map-overlay-1 {
+    background-color: #007C64;
+  }
+  
+  .bg-map-overlay-2 {
+    background-color: #4E9FB5;
+  }
+  
+  .bg-map-overlay-3 {
+    background-color: #FDBD3F;
+  }
+  
+  .bg-map-overlay-4 {
+    background-color: #E87400;
+  }
+  
+  @media (min-width: 992px) {
+    .map-price-overlay {
+      max-width: 170px;
+      position: absolute;
+    }
+  }/*# sourceMappingURL=interactive-map.css.map */
