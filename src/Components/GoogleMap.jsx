@@ -1,37 +1,17 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+import axios from 'axios';
 
 const containerStyle = {
-  width: '100vw',
+  width: '100%',
   height: '100vh',
 };
 
-const center = {
-  lat: -3.745,
-  lng: -38.523,
+// Default center (will be updated with actual hospital data)
+const defaultCenter = {
+  lat: 35.1756738,
+  lng: -86.09086479999999,
 };
-
-// Sample location data
-const locations = [
-  {
-    id: 1,
-    name: "Location One",
-    position: { lat: -3.745, lng: -38.523 },
-    description: "This is the first location"
-  },
-  {
-    id: 2,
-    name: "Location Two",
-    position: { lat: -3.742, lng: -38.520 },
-    description: "This is the second location"
-  },
-  {
-    id: 3,
-    name: "Location Three",
-    position: { lat: -3.748, lng: -38.526 },
-    description: "This is the third location"
-  }
-];
 
 function MapComponent() {
   const { isLoaded } = useJsApiLoader({
@@ -40,26 +20,103 @@ function MapComponent() {
   });
 
   const [map, setMap] = useState(null);
-  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [selectedHospital, setSelectedHospital] = useState(null);
+  const [hospitals, setHospitals] = useState([]);
+  const [center, setCenter] = useState(defaultCenter);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map);
+  // Hospital data
+  const hospitalsData = []
+
+  // Function to fetch coordinates
+  const getCoordinates = async (address) => {
+    try {
+      const apiKey = "AIzaSyBE6Ii-ZxHsICvzD2Fp3m3iMPYX-Vie1N4";
+      const response = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+        params: {
+          address: address,
+          key: apiKey,
+        },
+      });
+      
+      if (response.data.results.length > 0) {
+        const { lat, lng } = response.data.results[0].geometry.location;
+        return { lat, lng };
+      } else {
+        console.error("No coordinates found for address:", address);
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching coordinates:", error.message);
+      return null;
+    }
+  };
+
+  // Function to get hospital data with coordinates
+  const getHospitalsWithCoordinates = async () => {
+    setIsLoading(true);
+    const hospitalsWithCoordinates = [];
+
+    for (const hospital of hospitalsData) {
+      console.log(`${hospital["ADDRESS LINE 1"]}, ${hospital["CITY"]}, ${hospital["STATE"]} ${hospital["ZIP CODE"]}`);
+      
+      const fullAddress = `${hospital["ADDRESS LINE 1"]}, ${hospital["CITY"]}, ${hospital["STATE"]} ${hospital["ZIP CODE"]}`;
+      const position = await getCoordinates(fullAddress);
+      
+      if (position) {
+        hospitalsWithCoordinates.push({
+          id: hospital["ENROLLMENT ID"],
+          name: hospital["DOING BUSINESS AS NAME"],
+          position: position,
+          description: `${hospital["PRACTICE LOCATION TYPE"]} - ${hospital["CITY"]}, ${hospital["STATE"]}`,
+          address: fullAddress,
+          npi: hospital["NPI"]
+        });
+      }
+    }
+
+    setHospitals(hospitalsWithCoordinates);
+    console.log('hospital============',hospitalsWithCoordinates);
+    
+    // Set center to first hospital's coordinates if available
+    if (hospitalsWithCoordinates.length > 0) {
+      setCenter(hospitalsWithCoordinates[0].position);
+    }
+    
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getHospitalsWithCoordinates();
   }, []);
 
-  const onUnmount = useCallback(function callback(map) {
+  const onLoad = useCallback(function callback(map) {
+    // Create bounds that include all markers
+    if (hospitals.length > 0) {
+      const bounds = new window.google.maps.LatLngBounds();
+      hospitals.forEach(hospital => {
+        bounds.extend(hospital.position);
+      });
+      map.fitBounds(bounds);
+    }
+    setMap(map);
+  }, [hospitals]);
+
+  const onUnmount = useCallback(function callback() {
     setMap(null);
   }, []);
 
-  const handleMarkerClick = (location) => {
-    setSelectedLocation(location);
-    alert('heyy')
+  const handleMarkerClick = (hospital) => {
+    setSelectedHospital(hospital);
   };
 
   const handleInfoWindowClose = () => {
-    setSelectedLocation(null);
+    setSelectedHospital(null);
   };
+
+  if (isLoading) {
+    return <div>Loading hospital data...</div>;
+  }
 
   return isLoaded ? (
     <GoogleMap
@@ -69,30 +126,32 @@ function MapComponent() {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {/* Adding multiple markers */}
-      {locations.map(location => (
+      {/* Adding hospital markers */}
+      {hospitals.map(hospital => (
         <Marker
-          key={location.id}
-          position={location.position}
-          onClick={() => handleMarkerClick(location)}
+          key={hospital.id}
+          position={hospital.position}
+          onClick={() => handleMarkerClick(hospital)}
         />
       ))}
 
       {/* Info Window appears when a marker is clicked */}
-      {selectedLocation && (
+      {selectedHospital && (
         <InfoWindow
-          position={selectedLocation.position}
+          position={selectedHospital.position}
           onCloseClick={handleInfoWindowClose}
         >
-          <div>
-            <h3>{selectedLocation.name}</h3>
-            <p>{selectedLocation.description}</p>
+          <div style={{ padding: '5px', maxWidth: '300px' }}>
+            <h3 style={{ margin: '0 0 8px 0' }}>{selectedHospital.name}</h3>
+            <p style={{ margin: '0 0 5px 0' }}><strong>NPI:</strong> {selectedHospital.npi}</p>
+            <p style={{ margin: '0 0 5px 0' }}><strong>Type:</strong> {selectedHospital.description}</p>
+            <p style={{ margin: '0' }}><strong>Address:</strong> {selectedHospital.address}</p>
           </div>
         </InfoWindow>
       )}
     </GoogleMap>
   ) : (
-    <></>
+    <div>Loading Google Maps...</div>
   );
 }
 

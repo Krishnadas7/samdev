@@ -2,119 +2,119 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer class="primary-bg pt-5 pb-4">
-        <div class="container-fluid px-xl-5">
-            <div class="row gy-5">
-                <div class="col-12">
-                    <div class="footer-logo">
-                        <img src="images/logo-footer.svg" class="img-fluid" alt="Footer Logo"/>
+    <footer className="primary-bg pt-5 pb-3">
+        <div className="container-fluid px-xl-5">
+            <div className="row gy-5">
+                <div className="col-12">
+                    <div className="footer-logo">
+                        <img src="images/logo-footer.svg" className="img-fluid" alt="Footer Logo"/>
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="row gy-5">
-                        <div class="col-xl-2 col-lg-3 col-sm-4">
-                            <nav class="small fw-medium">
-                                <ul class="footer-nav list-group list-group-flush">
-                                    <li class="nav-item">
-                                        <div class="fw-bold mb-4">Sandwych</div>
+                <div className="col-12">
+                    <div className="row gy-3">
+                        <div className="col-xl-2 col-lg-3 col-sm-4">
+                            <nav className="small ">
+                                <ul className="footer-nav list-group list-group-flush">
+                                    <li className="nav-item">
+                                        <div className="fw-bold mb-4">Sandwych</div>
                                     </li>
-                                    <li class="nav-item"><a href="feature.html" class="nav-link">Features</a></li>
-                                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                                    <li class="nav-item"><a href="" class="nav-link">Download for iOS</a></li>
-                                    <li class="nav-item"><a href="" class="nav-link">Download for Android</a></li>
+                                    <li className="nav-item"><a href="feature.html" className="nav-link">Features</a></li>
+                                    <li className="nav-item"><a href="about.html" className="nav-link">About</a></li>
+                                    <li className="nav-item"><a href="" className="nav-link">Download for iOS</a></li>
+                                    <li className="nav-item"><a href="" className="nav-link">Download for Android</a></li>
                                 </ul>
                             </nav>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-sm-4">
-                            <nav class="small fw-medium">
-                                <ul class="footer-nav list-group list-group-flush">
-                                    <li class="nav-item">
-                                        <div class="fw-bold mb-4">Resources</div>
+                        <div className="col-xl-2 col-lg-3 col-sm-4">
+                            <nav className="small ">
+                                <ul className="footer-nav list-group list-group-flush">
+                                    <li className="nav-item">
+                                        <div className="fw-bold mb-4">Resources</div>
                                     </li>
-                                    <li class="nav-item"><a href="community-resources.html" class="nav-link">CareCost
+                                    <li className="nav-item"><a href="community-resources.html" className="nav-link">CareCost
                                             Map</a></li>
-                                    <li class="nav-item"><a href="all-caregiver-profiles.html" class="nav-link">The
+                                    <li className="nav-item"><a href="all-caregiver-profiles.html" className="nav-link">The
                                             Resource Stack</a></li>
-                                    <li class="nav-item"><a href="FAQs.html" class="nav-link">FAQs</a></li>
+                                    <li className="nav-item"><a href="FAQs.html" className="nav-link">FAQs</a></li>
                                 </ul>
                             </nav>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-sm-4">
-                            <nav class="small fw-medium">
-                                <ul class="footer-nav list-group list-group-flush">
-                                    <li class="nav-item">
-                                        <div class="fw-bold mb-4">Providers</div>
+                        <div className="col-xl-2 col-lg-3 col-sm-4">
+                            <nav className="small ">
+                                <ul className="footer-nav list-group list-group-flush">
+                                    <li className="nav-item">
+                                        <div className="fw-bold mb-4">Providers</div>
                                     </li>
-                                    <li class="nav-item"><a href="providers.html" class="nav-link">Why Integrate
+                                    <li className="nav-item"><a href="providers.html" className="nav-link">Why Integrate
                                             Sandwych?</a></li>
-                                    <li class="nav-item"><a href="how-it-works-providers.html" class="nav-link">How it
+                                    <li className="nav-item"><a href="how-it-works-providers.html" className="nav-link">How it
                                             Works</a></li>
-                                    <li class="nav-item"><a href="contact.html" class="nav-link">Schedule a Demo</a>
+                                    <li className="nav-item"><a href="contact.html" className="nav-link">Schedule a Demo</a>
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-sm-4">
-                            <nav class="small fw-medium">
-                                <ul class="footer-nav list-group list-group-flush">
-                                    <li class="nav-item">
-                                        <div class="fw-bold mb-4">Patients &amp; Care Partners</div>
+                        <div className="col-xl-2 col-lg-3 col-sm-4">
+                            <nav className="small ">
+                                <ul className="footer-nav list-group list-group-flush">
+                                    <li className="nav-item">
+                                        <div className="fw-bold mb-4">Patients &amp; Care Partners</div>
                                     </li>
-                                    <li class="nav-item"><a href="why-patients-and-carepartners.html"
-                                            class="nav-link">Why Use Sandwych?</a></li>
-                                    <li class="nav-item"><a href="how-it-works-patients-and-carepartners.html"
-                                            class="nav-link">How it Works</a></li>
-                                    <li class="nav-item"><a href="care-partner-style-quiz.html" class="nav-link">Care
+                                    <li className="nav-item"><a href="why-patients-and-carepartners.html"
+                                            className="nav-link">Why Use Sandwych?</a></li>
+                                    <li className="nav-item"><a href="how-it-works-patients-and-carepartners.html"
+                                            className="nav-link">How it Works</a></li>
+                                    <li className="nav-item"><a href="care-partner-style-quiz.html" className="nav-link">Care
                                             Partner Style Quiz</a></li>
-                                    <li class="nav-item"><a href="all-caregiver-profiles.html" class="nav-link">Care
+                                    <li className="nav-item"><a href="all-caregiver-profiles.html" className="nav-link">Care
                                             Partner Profiles</a></li>
                                 </ul>
                             </nav>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-sm-4">
-                            <nav class="small fw-medium">
-                                <ul class="footer-nav list-group list-group-flush">
-                                    <li class="nav-item">
-                                        <div class="fw-bold mb-4">Local Service Providers</div>
+                        <div className="col-xl-2 col-lg-3 col-sm-4">
+                            <nav className="small ">
+                                <ul className="footer-nav list-group list-group-flush">
+                                    <li className="nav-item">
+                                        <div className="fw-bold mb-4">Local Service Providers</div>
                                     </li>
-                                    <li class="nav-item"><a href="become-a-human-helper.html" class="nav-link">Why
+                                    <li className="nav-item"><a href="become-a-human-helper.html" className="nav-link">Why
                                             Partner with Sandwych?</a></li>
-                                    <li class="nav-item"><a href="how-it-works-human-helpers.html" class="nav-link">How
+                                    <li className="nav-item"><a href="how-it-works-human-helpers.html" className="nav-link">How
                                             it Works</a></li>
-                                    <li class="nav-item"><a href="" class="nav-link">Manage Your Listing</a></li>
-                                    <li class="nav-item"><a href="" class="nav-link">Schedule a Demo</a></li>
+                                    <li className="nav-item"><a href="" className="nav-link">Manage Your Listing</a></li>
+                                    <li className="nav-item"><a href="" className="nav-link">Schedule a Demo</a></li>
                                 </ul>
                             </nav>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-sm-4">
-                            <div class="d-flex flex-column align-items-center">
-                                <a href="contact.html" class="btn btn-type1 w-100 mb-3" title="">Contact</a>
-                                <a href="join-the-waitlist.html" class="btn btn-type1 btn-type1-inverse w-100 mb-3"
+                        <div className="col-xl-2 col-lg-3 col-sm-4">
+                            <div className="d-flex flex-column align-items-center">
+                                <a href="contact.html" className="btn btn-type1 w-100 mb-3" title="">Contact</a>
+                                <a href="join-the-waitlist.html" className="btn btn-type1 btn-type1-inverse w-100 mb-3"
                                     title="">Join the Waitlist</a>
-                                <a href="login.html" class="link-type1 fw-bold" title="">Log In </a>
+                                <a href="login.html" className="link-type1 fw-bold" title="">Log In {'>'}</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr class="border-white mt-5"/>
-            <div class="copyright-wrp text-white fs-7 fw-normal pb-2">
-                <div class="d-flex flex-lg-row flex-column justify-content-between align-items-center">
+            <hr className="border-white mt-5"/>
+            <div className="copyright-wrp text-white fs-7 fw-normal pb-4">
+                <div className="d-flex flex-lg-row flex-column justify-content-between align-items-center">
                     <div
-                        class="d-flex flex-md-nowrap flex-wrap justify-content-md-start justify-content-center order-lg-0 order-1">
-                        <div class="text-nowrap my-1">&copy;Copyright 2024 Sandwych</div>
-                        <div class="d-flex flex-wrap justify-content-center align-items-center">
-                            <span class="mx-3 my-1">|</span>
-                            <a href="terms-and-condition.html" class="nav-link my-1">Terms &amp; Conditions</a>
-                            <span class="mx-3 my-1">|</span>
-                            <a href="privacy-policy.html" class="nav-link my-1">Privacy Policy</a>
-                            <span class="mx-3 my-1">|</span>
-                            <a href="" class="nav-link my-1">HIPAA Policy</a>
+                        className="d-flex flex-md-nowrap flex-wrap justify-content-md-start justify-content-center order-lg-0 order-1">
+                        <div className="text-nowrap my-1">&copy;Copyright 2024 Sandwych</div>
+                        <div className="d-flex flex-wrap justify-content-center align-items-center">
+                            <span className="mx-3 my-1">|</span>
+                            <a href="terms-and-condition.html" className="nav-link my-1">Terms &amp; Conditions</a>
+                            <span className="mx-3 my-1">|</span>
+                            <a href="privacy-policy.html" className="nav-link my-1">Privacy Policy</a>
+                            <span className="mx-3 my-1">|</span>
+                            <a href="" className="nav-link my-1">HIPAA Policy</a>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center order-lg-1 order-0 mb-lg-0 mb-4">
+                    <div className="d-flex align-items-center order-lg-1 order-0 mb-lg-0 mb-4">
                         <div>Follow us:</div>
-                        <a href="https://www.facebook.com/HelloSandwYch/" class="social-links">
+                        <a href="https://www.facebook.com/HelloSandwYch/" className="social-links">
                             <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -122,7 +122,7 @@ function Footer() {
                                     fill="#B3B3B3" />
                             </svg>
                         </a>
-                        <a href="https://www.instagram.com/hellosandwych/" class="social-links">
+                        <a href="https://www.instagram.com/hellosandwych/" className="social-links">
                             <svg width="24" height="23" viewBox="0 0 24 23" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_2349_7409)">
@@ -138,7 +138,7 @@ function Footer() {
                                 </defs>
                             </svg>
                         </a>
-                        <a href="https://www.linkedin.com/company/sandwych/" class="social-links">
+                        <a href="https://www.linkedin.com/company/sandwych/" className="social-links">
                             <svg width="34" height="34" viewBox="0 0 34 34" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
