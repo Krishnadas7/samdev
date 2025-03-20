@@ -14,9 +14,9 @@ export default defineConfig({
     },
 
     manifest: {
-      name: 'carecost',
-      short_name: 'cc',
-      description: 'carecost',
+      name: 'frontend',
+      short_name: 'frontend',
+      description: 'frontend',
       theme_color: '#ffffff',
     },
 
@@ -27,7 +27,7 @@ export default defineConfig({
     },
 
     devOptions: {
-      enabled: true,
+      enabled: false,
       navigateFallback: 'index.html',
       suppressWarnings: true,
       type: 'module',

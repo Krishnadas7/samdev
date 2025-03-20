@@ -32,6 +32,7 @@ function MapComponent() {
   const getCoordinates = async (address) => {
     try {
       const apiKey = "AIzaSyBE6Ii-ZxHsICvzD2Fp3m3iMPYX-Vie1N4";
+      
       const response = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
         params: {
           address: address,

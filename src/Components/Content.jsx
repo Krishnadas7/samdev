@@ -1,12 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MapComponent from './GoogleMap'
 import { useState,useRef } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { providerSearch } from '../api/filterApi';
+import { setFilter } from '../store/slices/providerSlice';
+import ProviderResult from './ProviderResult';
+function Content() {
+    const [val,setVal] = useState(false)
+    const [results,setResults] = useState([])
+    const dispatch = useDispatch()
+    const filters = useSelector(state => state.providerSearch.filters);
+    // console.log('fil=============',filters);
 
-function Main() {
-    const [filter,setFilter] = useState('')
-    const handleFilter = ()=>{
-          setFilter()
-    }
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        console.log(name,'=========',value);
+        console.log(filters);
+        
+        dispatch(setFilter({ [name]: value }));
+    };
+    
+    const fetchResults = async () => {
+        try {
+            let res = await providerSearch(filters);
+            console.log('res==========',res);
+            setVal(true)
+            setResults(res); // Store the result in state
+        } catch (error) {
+            console.error("Error fetching provider data:", error);
+        }
+    };
   return (
     <main className="min-vh-100 position-relative">
        {/* sidebar */}
@@ -23,6 +46,9 @@ function Main() {
                                 <button type="button" id="filterToggle" className="btn d-flex align-items-center border-0"><img
                                         src="images/settings-icon.svg" className="img-fluid" alt=""/></button>
                                 <input type="text" className="border-0 w-100 form-control text-grey shadow-none"
+                                   name="Rndrng_Prvdr_Zip5"
+                                   value={filters.Rndrng_Prvdr_Zip5}
+                                   onChange={handleInputChange}
                                     placeholder="Search by Zip Code"/>
                                 <button type="button" className="btn d-flex align-items-center border-0 p-2"><img
                                         src="images/search-icon.svg" className="img-fluid" alt=""/></button>
@@ -30,7 +56,11 @@ function Main() {
                         </div>
                     </div>
                     <div className="p-3 py-lg-3 py-2 border border-start-0 border-end-0 border-bottom-0 border-common">
-                        <div className="px-lg-3 filter-wrp" id="filterWraper">
+                        {/* sort by endind================ */}
+                        {val ? (
+                          <ProviderResult results={results}/>
+                        ) :(
+                            <div className="px-lg-3 filter-wrp" id="filterWraper">
                             <div className="py-3 position-relative">
                                 <button type="reset" className="btn d-flex align-items-center border-0 fs-5 position-absolute end-0 top-0">
                                     <i className="fa-solid fa-xmark"></i>
@@ -262,7 +292,9 @@ function Main() {
                                                                 </div>
                                                                  {/* <label for="tags">T </label>  */}
                                                                 <div className="input-no-data">
-                                                                    <input id="providerSpeciality"  className="input-js form-control text-sandwych-purple fs-5 border-0 border-bottom rounded-0 shadow-none ps-0 pe-4"/>
+                                                                    <input id="providerSpeciality" name="Rndrng_Prvdr_Type"
+                                                                   value={filters.Rndrng_Prvdr_Type}
+                                                                onChange={handleInputChange} className="input-js form-control text-sandwych-purple fs-5 border-0 border-bottom rounded-0 shadow-none ps-0 pe-4"/>
                                                                     <button type="button" className="btn border-0 p-0 py-1 text-grey fs-8">Search<span
                                                                         className="search-arrow">&nbsp;{">"}</span></button>
                                                                 </div>
@@ -390,7 +422,7 @@ function Main() {
                                                 </div>
                                             </div>
                                             <div className="py-3">
-                                                 <button type="button" className="btn btn-type1 px-3">View Results</button> 
+                                                 <button type="button" className="btn btn-type1 px-3" onClick={fetchResults}>View Results</button> 
                                                 {/* <a type="button" className="btn btn-type1 px-3" href="sidebar-search-output-provider.html">View Results</a> */}
 
                                             </div>
@@ -675,6 +707,9 @@ function Main() {
                                 </div>
                             </div>
                         </div>
+                        )}
+                        
+                        {/* capture results============================== */}
                         <div className="px-lg-3">
                             <div className="border border-start-0 border-end-0 border-bottom-0 border-common py-3">
                                 <div className="pt-3">
@@ -742,4 +777,4 @@ function Main() {
   )
 }
 
-export default Main
+export default Content
