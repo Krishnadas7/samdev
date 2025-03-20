@@ -11,6 +11,7 @@ import 'jquery-ui-dist/jquery-ui.css'; // jQuery UI Styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import store from './store/store.js'
+
 import {Provider} from 'react-redux'
 
 createRoot(document.getElementById('root')).render(
